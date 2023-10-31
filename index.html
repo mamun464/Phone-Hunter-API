@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- data-theme="cupcake" -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- DaisyUI and  tailwind CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.7/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/7fdcff034b.js" crossorigin="anonymous"></script>
+    <!-- google Work Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+    <title>Shop</title>
+</head>
+
+<style>
+    .font-sens {
+
+        font-family: 'Work Sans', sans-serif;
+    }
+
+    #btn_discount.disabled,
+    #btn_purchase.disabled {
+        cursor: not-allowed;
+    }
+
+    #btn_discount.disabled:hover,
+    #btn_purchase.disabled:hover {
+        cursor: not-allowed;
+    }
+</style>
+<!-- <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                backgroundImage: {
+                    "back_image": "url('./images/banner3.png')",
+                    "back_image2": "url('./images/banner1.png')",
+                },
+                backgroundColor: {
+                    "bg-header": "#FF0000",
+                },
+            },
+        },
+    };
+</script> -->
+
+<body class="font-sens">
+
+    <main class="container mx-auto mt-8">
+        <section class="bg-gray-100 p-4 m-4 rounded-lg">
+
+            <input id="search_field" type="text" placeholder="Search..." class="input input-bordered w-full max-w-xs">
+            <button onclick="handleSearch()" class="btn btn-accent">Search</button>
+
+        </section>
+
+        <section>
+            <div id="loadingSpinner" class=" hidden text-center my-40">
+                <span class="loading loading-bars loading-lg"></span>
+            </div>
+            <div id="phones_container" class="grid grid-cols-1 gap-4 p-5 md:grid-cols-2 lg:grid-cols-3 ">
+
+            </div>
+
+            <div id="showAll" class="hidden p-6 text-center">
+                <button onclick="showAllHandeler()" class="btn btn-accent">Show All</button>
+            </div>
+        </section>
+
+        <!-- Detail show modal -->
+        <!-- Open the modal using ID.showModal() method -->
+
+        <dialog id="detailsShow_modal_" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <div id="phoneDetailsContainer" class="p-6">
+
+                </div>
+
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+    </main>
+
+
+
+    <script src="phone.js"></script>
+
+</body>
+
+</html>
