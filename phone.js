@@ -2,7 +2,26 @@ const loadPhone = async (searchText = "13", isShowAll) => {
     const response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await response.json();
     const phones = data.data;
-    displayPhones(phones, isShowAll);
+    console.log(phones);
+    if (phones.length != 0) {
+        displayPhones(phones, isShowAll);
+    } else {
+        console.log('No phones found');
+        const showButton = document.getElementById("showAll");
+        showButton.classList.add('hidden');
+
+        const phoneContainer = document.getElementById("phones_container");
+
+        phoneContainer.textContent = '';
+        const addText = document.createElement('div');
+        addText.innerHTML = `
+        <h2 class="font-extrabold text-center text-2xl"> No Phone Found.</h2>
+        `
+        phoneContainer.appendChild(addText)
+        loadingSpinner(false);
+
+
+    }
 }
 
 
@@ -61,6 +80,8 @@ const showDetails = async (id) => {
 const modalShow = phone => {
     detailsShow_modal_.showModal();
     const container = document.getElementById("phoneDetailsContainer");
+
+    container.textContent = '';
 
     const phoneDetails = document.createElement("div");
     phoneDetails.innerHTML = `
